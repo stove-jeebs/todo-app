@@ -7,7 +7,7 @@ export default function Form({ handleSubmit }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        input != "" && handleSubmit(input);
+        input != "" && handleSubmit(input) && setInput("");
       }}
     >
       {/* circle */}
@@ -16,6 +16,7 @@ export default function Form({ handleSubmit }) {
       {/* input field */}
       <input
         type="text"
+        value={input} // this is so you can clear the input every time the user submits input
         onChange={(e) => setInput(e.target.value)}
         placeholder="Create a new todo..."
       />

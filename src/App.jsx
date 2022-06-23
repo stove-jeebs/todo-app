@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Form from "./components/Form";
-import List from "./components/List";
+import Todo from "./components/Todo";
+import { getTodos } from "./firebase";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -10,11 +11,16 @@ export default function App() {
     setTodos([...todos, input]);
   };
 
+  useEffect(() => {
+    const todoList = getTodos();
+    todoList.then((value) => setTodos(value.map((item) => item.task)));
+  }, []);
+
   return (
-    <div className="bg-darkPrimary h-screen">
+    <div className="h-screen bg-darkPrimary">
       <Header />
       <Form handleSubmit={handleSubmit} />
-      <List todos={todos} />
+      <Todo todos={todos} />
     </div>
   );
 }

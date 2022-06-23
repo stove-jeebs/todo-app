@@ -7,10 +7,7 @@ export default function Header() {
   return (
     <div>
       <h1>TODO</h1>
-      <img
-        src={isDark ? dark : light}
-        onClick={() => setIsDark((prevState) => !prevState)}
-      />
+      <img src={isDark ? dark : light} onClick={() => setIsDark((prevState) => !prevState)} />
     </div>
   );
 }
