@@ -3,6 +3,7 @@ import { getTodos, addTodo, deleteTodo } from "./firebase";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
+import desktopDark from "./assets/bg-desktop-dark.jpg";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -28,10 +29,15 @@ export default function App() {
 
   return (
     <div className="flex items-center justify-center h-screen bg-darkPrimary">
-      <div className="container">
+      {/* background image */}
+      <div className="w-screen h-[33%] bg-cover self-start" style={{ backgroundImage: `url(${desktopDark})` }} />
+
+      {/* container */}
+      <div className="container absolute top-[5%]">
         <Header />
         <Form handleSubmit={handleSubmit} />
         <Todo todos={todos} handleDelete={handleDelete} />
+        <footer className="my-8 text-lg text-center text-darkText2">Drag and drop to reordr list</footer>
       </div>
     </div>
   );
