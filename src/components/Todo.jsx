@@ -7,7 +7,11 @@ export default function List({ todos, handleDelete }) {
       <li className="text-lightPrimary" key={index}>
         {/* circle button */}
         <div></div>
+
+        {/* task text */}
         {item.todo}
+
+        {/* delete button */}
         <button
           type="button"
           onClick={() => {

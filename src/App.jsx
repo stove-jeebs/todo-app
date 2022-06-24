@@ -19,6 +19,7 @@ export default function App() {
     todoList.then((value) => setTodos(value)).catch((err) => console.log(err));
   }, []);
 
+  // deletes an item in the todo list
   const handleDelete = (index) => {
     todos.splice(index, 1);
     setTodos([...todos]);
