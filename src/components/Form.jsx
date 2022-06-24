@@ -7,7 +7,8 @@ export default function Form({ handleSubmit }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        input != "" && handleSubmit(input) && setInput("");
+        input != "" && handleSubmit(input);
+        setInput("");
       }}
     >
       {/* circle */}

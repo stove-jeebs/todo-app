@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore/lite";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,4 +25,10 @@ async function getTodos() {
   return todosSnapshot.docs.map((doc) => doc.data());
 }
 
-export { getTodos };
+async function addTodos(task) {
+  await addDoc(collection(db, "todos"), {
+    task: `${task}`,
+  });
+}
+
+export { db, getTodos, addTodos };

@@ -6,8 +6,12 @@ export default function Header() {
   const [isDark, setIsDark] = useState(true);
   return (
     <div>
-      <h1>TODO</h1>
-      <img src={isDark ? dark : light} onClick={() => setIsDark((prevState) => !prevState)} />
+      <h1 className="text-lightPrimary">TODO</h1>
+      <img
+        src={isDark ? dark : light}
+        onClick={() => setIsDark((prevState) => !prevState)}
+        className="cursor-pointer"
+      />
     </div>
   );
 }

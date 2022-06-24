@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
+import { getTodos, addTodos } from "./firebase";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
-import { getTodos } from "./firebase";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
 
   const handleSubmit = (input) => {
     setTodos([...todos, input]);
+    // add todo task to the database
+    addTodos(input);
   };
 
   useEffect(() => {
