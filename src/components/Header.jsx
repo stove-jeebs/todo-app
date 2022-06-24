@@ -6,7 +6,7 @@ export default function Header() {
   const [isDark, setIsDark] = useState(true);
 
   return (
-    <div>
+    <div className="inline-block">
       <h1 className="text-lightPrimary">TODO</h1>
       <img
         src={isDark ? dark : light}

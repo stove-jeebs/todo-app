@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTodos, addTodo } from "./firebase";
+import { getTodos, addTodo, deleteTodo } from "./firebase";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
@@ -20,16 +20,19 @@ export default function App() {
   }, []);
 
   // deletes an item in the todo list
-  const handleDelete = (index) => {
+  const handleDelete = (index, id) => {
     todos.splice(index, 1);
     setTodos([...todos]);
+    deleteTodo(id);
   };
 
   return (
-    <div className="h-screen bg-darkPrimary">
-      <Header />
-      <Form handleSubmit={handleSubmit} />
-      <Todo todos={todos} handleDelete={handleDelete} />
+    <div className="flex items-center justify-center h-screen bg-darkPrimary">
+      <div className="container">
+        <Header />
+        <Form handleSubmit={handleSubmit} />
+        <Todo todos={todos} handleDelete={handleDelete} />
+      </div>
     </div>
   );
 }

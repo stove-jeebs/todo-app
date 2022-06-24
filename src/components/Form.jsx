@@ -5,6 +5,7 @@ export default function Form({ handleSubmit }) {
 
   return (
     <form
+      className="inline-block"
       onSubmit={(e) => {
         e.preventDefault();
         input != "" && handleSubmit(input);
