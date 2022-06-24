@@ -4,6 +4,7 @@ import dark from "../assets/icon-moon.svg";
 
 export default function Header() {
   const [isDark, setIsDark] = useState(true);
+
   return (
     <div>
       <h1 className="text-lightPrimary">TODO</h1>
