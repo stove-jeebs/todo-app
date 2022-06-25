@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getTodos, addTodo, deleteTodo } from "./firebase";
+import { db, addTodo, deleteTodo } from "./firebase";
+import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
@@ -11,8 +12,15 @@ export default function App() {
 
   // fetches data from the database and set the array to todos
   useEffect(() => {
-    const todoList = getTodos();
-    todoList.then((value) => setTodos(value)).catch((err) => console.log(err));
+    const todoRef = query(collection(db, "todos"), orderBy("timestamp"));
+    onSnapshot(todoRef, (snapshot) => {
+      setTodos(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          todo: doc.data().task,
+        }))
+      );
+    });
   }, []);
 
   // add item to the todo list and the database
