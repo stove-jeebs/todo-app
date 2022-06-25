@@ -3,22 +3,23 @@ import { getTodos, addTodo, deleteTodo } from "./firebase";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
+import Footer from "./components/Footer";
 import desktopDark from "./assets/bg-desktop-dark.jpg";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
-
-  const handleSubmit = (input) => {
-    setTodos([...todos, { todo: `${input}` }]);
-    // add todo task to the database
-    addTodo(input);
-  };
 
   // fetches data from the database and set the array to todos
   useEffect(() => {
     const todoList = getTodos();
     todoList.then((value) => setTodos(value)).catch((err) => console.log(err));
   }, []);
+
+  // add item to the todo list and the database
+  const handleSubmit = (input) => {
+    setTodos([...todos, { todo: `${input}` }]);
+    addTodo(input);
+  };
 
   // deletes an item in the todo list
   const handleDelete = (index, id) => {
@@ -28,7 +29,10 @@ export default function App() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-darkPrimary">
+    <div
+      className="flex items-center justify-center h-screen bg-darkPrimary"
+      style={{ textRendering: "optimizeSpeed" }}
+    >
       {/* background image */}
       <div className="w-screen h-[33%] bg-cover self-start" style={{ backgroundImage: `url(${desktopDark})` }} />
 
@@ -37,7 +41,7 @@ export default function App() {
         <Header />
         <Form handleSubmit={handleSubmit} />
         <Todo todos={todos} handleDelete={handleDelete} />
-        <footer className="my-8 text-lg text-center text-darkText2">Drag and drop to reordr list</footer>
+        <Footer />
       </div>
     </div>
   );

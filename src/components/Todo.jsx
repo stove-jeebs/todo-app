@@ -2,14 +2,11 @@ import deleteButton from "../assets/icon-cross.svg";
 import checkIcon from "../assets/icon-check.svg";
 
 export default function List({ todos, handleDelete }) {
+  // map list element for every task in the todos list
   const list = todos.map((item, index) => {
     return (
-      <li
-        className="relative border-b border-darkBorder bg-darkSecondary cursor-grab text-darkText1"
-        key={index}
-        draggable
-      >
-        {/* circle button */}
+      <li className="relative border-b border-darkBorder bg-darkSecondary cursor-grab text-darkText1" key={index}>
+        {/* check button */}
         <button className="p-[0.4rem] mx-8 rounded-full aspect-square bg-gradient-to-r from-checkFrom to-checkTo bg-check">
           <img src={checkIcon} alt="check-icon" />
         </button>
@@ -25,21 +22,5 @@ export default function List({ todos, handleDelete }) {
     );
   });
 
-  return (
-    <section className="bg-darkSecondary">
-      {/* lists */}
-      <ul>{list}</ul>
-
-      {/* buttons */}
-      <div className="container flex justify-between py-4 text-darkText2">
-        <p>n items left</p>
-        <div>
-          <button className="hover:text-darkText1">All</button>
-          <button className="mx-4 hover:text-darkText1">Active</button>
-          <button className="hover:text-darkText1">Complete</button>
-        </div>
-        <button className="hover:text-darkText1">Clear Completed</button>
-      </div>
-    </section>
-  );
+  return <ul className="bg-darkSecondary">{list}</ul>;
 }

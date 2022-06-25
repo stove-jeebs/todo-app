@@ -34,8 +34,8 @@ async function addTodo(task) {
   });
 }
 
-async function deleteTodo(task) {
-  await deleteDoc(doc(db, "todos", `${task}`));
+async function deleteTodo(id) {
+  await deleteDoc(doc(db, "todos", `${id}`));
 }
 
 export { db, getTodos, addTodo, deleteTodo };
