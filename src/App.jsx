@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { db, addTodo, deleteTodo } from "./firebase";
 import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
+import { db, addTodo, deleteTodo } from "./firebase";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
@@ -13,14 +13,14 @@ export default function App() {
   // fetches data from the database and set the array to todos
   useEffect(() => {
     const todoRef = query(collection(db, "todos"), orderBy("timestamp"));
-    onSnapshot(todoRef, (snapshot) => {
+    onSnapshot(todoRef, (snapshot) =>
       setTodos(
         snapshot.docs.map((doc) => ({
           id: doc.id,
           todo: doc.data().task,
         }))
-      );
-    });
+      )
+    );
   }, []);
 
   // add item to the todo list and the database
@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <div
-      className="flex items-center justify-center h-screen bg-darkPrimary"
+      className="flex items-center justify-center h-screen select-none bg-darkPrimary"
       style={{ textRendering: "optimizeSpeed" }}
     >
       {/* background image */}
