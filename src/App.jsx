@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
 import { db, addTodo, deleteTodo } from "./firebase";
+import { DragDropContext } from "react-beautiful-dnd";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
@@ -38,27 +39,33 @@ export default function App() {
     deleteTodo(id);
   };
 
+  // change theme
   const handleTheme = () => setIsDark((prevState) => !prevState);
 
-  return (
-    <div
-      className={`${
-        isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"
-      } flex items-center justify-center h-screen select-none transition-all`}
-      style={{ textRendering: "optimizeSpeed" }}
-    >
-      {/* background image */}
-      <div
-        className="w-screen h-[33%] bg-cover self-start"
-        style={{ backgroundImage: `url(${isDark ? darkBackground : lightBackground})` }}
-      />
+  const onDragEnd = () => {
+    console.log("list reordered");
+  };
 
-      {/* container */}
-      <div className="container absolute top-[5%]">
-        <Header isDark={isDark} handleTheme={handleTheme} />
-        <Form handleSubmit={handleSubmit} />
-        <Todo todos={todos} handleDelete={handleDelete} />
+  return (
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div
+        className={`${
+          isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"
+        } flex items-center justify-center h-screen select-none transition-all`}
+        style={{ textRendering: "optimizeSpeed" }}
+      >
+        {/* background image */}
+        <div
+          className="w-screen h-[33%] bg-cover self-start"
+          style={{ backgroundImage: `url(${isDark ? darkBackground : lightBackground})` }}
+        />
+        {/* container */}
+        <div className="container absolute top-[5%]">
+          <Header isDark={isDark} handleTheme={handleTheme} />
+          <Form handleSubmit={handleSubmit} />
+          <Todo todos={todos} handleDelete={handleDelete} />
+        </div>
       </div>
-    </div>
+    </DragDropContext>
   );
 }
