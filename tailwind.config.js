@@ -36,11 +36,15 @@ module.exports = {
         darkPrimary: "hsl(235, 21%, 11%)",
         darkSecondary: "hsl(235, 24%, 19%)",
         darkBorder: "hsl(237, 14%, 26%)",
-        darkText1: "hsl(234, 39%, 85%)",
-        darkText2: "hsl(234, 11%, 52%)",
+        darkText: "hsl(234, 39%, 85%)",
+        darkAccent: "hsl(234, 11%, 52%)",
+        darkCheckBorder: "",
 
         // light theme
         lightPrimary: "hsl(0, 0%, 98%)",
+        lightSecondary: "hsl(236, 33%, 92%)",
+        lightBorder: "hsl(233, 11%, 84%)",
+        lightText: "hsl(235, 19%, 35%)",
       },
     },
   },

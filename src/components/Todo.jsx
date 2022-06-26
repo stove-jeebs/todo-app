@@ -5,7 +5,10 @@ export default function List({ todos, handleDelete }) {
   // map list element for every task in the todos list
   const list = todos.map((item, index) => {
     return (
-      <li className="relative border-b group border-darkBorder bg-darkSecondary cursor-grab text-darkText1" key={index}>
+      <li
+        className="relative border-b group border-lightBorder bg-lightPrimary dark:border-darkBorder dark:bg-darkSecondary cursor-grab dark:text-darkText"
+        key={index}
+      >
         {/* check button */}
         <button className="p-[0.4rem] mx-8 rounded-full aspect-square bg-gradient-to-r from-checkFrom to-checkTo bg-check">
           <img src={checkIcon} alt="check-icon" />

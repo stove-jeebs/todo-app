@@ -5,10 +5,12 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
 import Footer from "./components/Footer";
-import desktopDark from "./assets/bg-desktop-dark.jpg";
+import darkBackground from "./assets/bg-desktop-dark.jpg";
+import lightBackground from "./assets/bg-desktop-light.jpg";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [isDark, setIsDark] = useState(true);
 
   // fetches data from the database and set the array to todos
   useEffect(() => {
@@ -36,20 +38,29 @@ export default function App() {
     deleteTodo(id);
   };
 
+  const handleTheme = () => setIsDark((prevState) => !prevState);
+
   return (
     <div
-      className="flex items-center justify-center h-screen select-none bg-darkPrimary"
+      className={`${
+        isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"
+      } flex items-center justify-center h-screen select-none`}
       style={{ textRendering: "optimizeSpeed" }}
     >
       {/* background image */}
-      <div className="w-screen h-[33%] bg-cover self-start" style={{ backgroundImage: `url(${desktopDark})` }} />
+      <div
+        className="w-screen h-[33%] bg-cover self-start"
+        style={{ backgroundImage: `url(${isDark ? darkBackground : lightBackground})` }}
+      />
 
       {/* container */}
       <div className="container absolute top-[5%]">
-        <Header />
+        <Header isDark={isDark} handleTheme={handleTheme} />
         <Form handleSubmit={handleSubmit} />
         <Todo todos={todos} handleDelete={handleDelete} />
-        <Footer />
+        <div className="shadow-xl">
+          <Footer />
+        </div>
       </div>
     </div>
   );
