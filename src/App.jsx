@@ -44,7 +44,7 @@ export default function App() {
     <div
       className={`${
         isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"
-      } flex items-center justify-center h-screen select-none`}
+      } flex items-center justify-center h-screen select-none transition-all`}
       style={{ textRendering: "optimizeSpeed" }}
     >
       {/* background image */}
@@ -57,8 +57,8 @@ export default function App() {
       <div className="container absolute top-[5%]">
         <Header isDark={isDark} handleTheme={handleTheme} />
         <Form handleSubmit={handleSubmit} />
-        <Todo todos={todos} handleDelete={handleDelete} />
-        <div className="shadow-xl">
+        <div className="shadow-lg">
+          <Todo todos={todos} handleDelete={handleDelete} />
           <Footer />
         </div>
       </div>

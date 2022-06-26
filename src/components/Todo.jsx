@@ -6,7 +6,7 @@ export default function List({ todos, handleDelete }) {
   const list = todos.map((item, index) => {
     return (
       <li
-        className="relative border-b group border-lightBorder bg-lightPrimary dark:border-darkBorder dark:bg-darkSecondary cursor-grab dark:text-darkText"
+        className="relative border-b group border-lightBorder bg-lightPrimary dark:border-darkBorder dark:bg-darkSecondary cursor-grab"
         key={index}
       >
         {/* check button */}
@@ -15,7 +15,7 @@ export default function List({ todos, handleDelete }) {
         </button>
 
         {/* task text */}
-        <p className="inline-block py-5">{item.todo}</p>
+        <p className="inline-block py-5 text-lightText dark:text-darkText">{item.todo}</p>
 
         {/* delete button */}
         <button

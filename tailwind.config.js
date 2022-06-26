@@ -45,6 +45,7 @@ module.exports = {
         lightSecondary: "hsl(236, 33%, 92%)",
         lightBorder: "hsl(233, 11%, 84%)",
         lightText: "hsl(235, 19%, 35%)",
+        lightAccent: "hsl(236, 9%, 61%)",
       },
     },
   },
