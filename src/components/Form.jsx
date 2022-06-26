@@ -5,7 +5,7 @@ export default function Form({ handleSubmit }) {
 
   return (
     <form
-      className="flex py-2 mt-12 mb-8 text-xl rounded text-lightText bg-lightPrimary dark:text-darkText dark:bg-darkSecondary"
+      className="flex py-2 mt-12 mb-8 text-xl rounded-md text-lightText bg-lightPrimary dark:text-darkText dark:bg-darkSecondary"
       onSubmit={(e) => {
         e.preventDefault();
         input != "" && handleSubmit(input);
@@ -18,7 +18,7 @@ export default function Form({ handleSubmit }) {
       {/* input field */}
       <input
         type="text"
-        className="mx-2 bg-lightPrimary dark:bg-darkSecondary focus:outline-none"
+        className="w-full pr-8 mx-2 bg-lightPrimary dark:bg-darkSecondary focus:outline-none"
         value={input} // this is so you can clear the input every time the user submits input
         onChange={(e) => setInput(e.target.value)}
         placeholder="Create a new todo..."

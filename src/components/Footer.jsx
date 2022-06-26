@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer({ length }) {
   return (
-    <footer className="container flex justify-between py-4 rounded-b bg-lightPrimary dark:bg-darkSecondary text-lightAccent dark:text-darkAccent">
+    <footer className="container flex justify-between py-4 rounded-b-md bg-lightPrimary dark:bg-darkSecondary text-lightAccent dark:text-darkAccent">
       {/* number of items remaining in the todo list */}
       <p>{length} items left</p>
 

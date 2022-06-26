@@ -28,7 +28,7 @@ export default function App() {
 
   // add item to the todo list and the database
   const handleSubmit = (input) => {
-    setTodos([...todos, { todo: `${input}` }]);
+    setTodos([...todos, { todo: `${input}`, index: todos.length }]);
     addTodo(input, todos.length);
   };
 
@@ -42,12 +42,17 @@ export default function App() {
   // change theme
   const handleTheme = () => setIsDark((prevState) => !prevState);
 
-  const onDragEnd = () => {
-    console.log("list reordered");
+  const handleEnd = (result) => {
+    console.log(result);
+    try {
+      result.source.index === result.destination.index || !result.destination === null;
+    } catch (error) {
+      return;
+    }
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={handleEnd}>
       <div
         className={`${
           isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"

@@ -9,8 +9,8 @@ export default function List({ todos, handleDelete }) {
     return (
       <Draggable key={todo.index} draggableId={`task-${todo.index}`} index={todo.index}>
         {(provided) => (
-          <div
-            className="relative border-b group border-lightBorder bg-lightPrimary dark:border-darkBorder dark:bg-darkSecondary cursor-grab"
+          <li
+            className="relative border-b first:rounded-t-md group border-lightBorder bg-lightPrimary dark:border-darkBorder dark:bg-darkSecondary cursor-grab"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
@@ -31,7 +31,7 @@ export default function List({ todos, handleDelete }) {
             >
               <img src={deleteButton} alt="delete button" />
             </button>
-          </div>
+          </li>
         )}
       </Draggable>
     );
@@ -41,10 +41,14 @@ export default function List({ todos, handleDelete }) {
     <div className="shadow-lg">
       <Droppable droppableId={"todolist"}>
         {(provided) => (
-          <div className="bg-darkSecondary" ref={provided.innerRef} {...provided.droppableProps}>
+          <ul
+            className="rounded-t-md bg-lightSecondary dark:bg-darkSecondary"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
             {list}
             {provided.placeholder}
-          </div>
+          </ul>
         )}
       </Droppable>
       <Footer length={todos.length} />
