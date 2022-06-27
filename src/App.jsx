@@ -13,12 +13,13 @@ export default function App() {
 
   // fetches data from the database and set the array to todos
   useEffect(() => {
-    const todoRef = query(collection(db, "todos"), orderBy("timestamp"));
+    const todoRef = query(collection(db, "todos"), orderBy("index"));
     onSnapshot(todoRef, (snapshot) =>
       setTodos(
         snapshot.docs.map((doc) => ({
           id: doc.id,
           todo: doc.data().task,
+          index: doc.data().index,
         }))
       )
     );
@@ -27,7 +28,7 @@ export default function App() {
   // add item to the todo list and the database
   const handleSubmit = (input) => {
     setTodos([...todos, { todo: `${input}` }]);
-    addTodo(input);
+    addTodo(input, todos.length);
   };
 
   // deletes an item in the todo list
