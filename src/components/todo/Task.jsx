@@ -26,7 +26,13 @@ export default function Task({ id, task, handleDelete, status, index }) {
           </button>
 
           {/* task text */}
-          <p className="inline-block py-5 text-lightText dark:text-darkText">{task.task}</p>
+          <p
+            className={`${
+              status === "complete" ? "line-through text-darkAccent" : "text-lightText dark:text-darkText"
+            } inline-block py-5 `}
+          >
+            {task.task}
+          </p>
 
           {/* delete button */}
           <button

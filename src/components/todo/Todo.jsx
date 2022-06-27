@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Droppable } from "react-beautiful-dnd";
+import { deleteTodo } from "../../firebase";
 import Task from "./Task";
 import Footer from "../Footer";
 
@@ -9,6 +10,10 @@ export default function List({ todos, handleDelete }) {
   const filtered = todos.filter((todo) =>
     filter === "all" ? true : filter === "active" ? todo.status === "active" : todo.status === "complete"
   );
+
+  const clearCompleted = () => {
+    todos.filter((todo) => (todo.status === "complete" ? deleteTodo(todo.id) : null));
+  };
 
   return (
     <section className="shadow-lg">
@@ -35,7 +40,12 @@ export default function List({ todos, handleDelete }) {
       </Droppable>
 
       {/* footer contain filter buttons */}
-      <Footer length={todos.length} handleFilter={(status) => setFilter(status)} />
+      <Footer
+        length={todos.length}
+        filter={filter}
+        handleFilter={(status) => setFilter(status)}
+        handleClear={clearCompleted}
+      />
     </section>
   );
 }

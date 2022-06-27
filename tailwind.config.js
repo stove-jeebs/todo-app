@@ -28,6 +28,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        brightBlue: "hsl(220, 98%, 61%)",
+
         // check background
         checkFrom: "hsl(192, 100%, 67%)",
         checkTo: "hsl(280, 87%, 65%)",
@@ -38,7 +40,6 @@ module.exports = {
         darkBorder: "hsl(237, 14%, 26%)",
         darkText: "hsl(234, 39%, 85%)",
         darkAccent: "hsl(234, 11%, 52%)",
-        darkCheckBorder: "",
 
         // light theme
         lightPrimary: "hsl(0, 0%, 98%)",
