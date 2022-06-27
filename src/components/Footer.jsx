@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Footer() {
+export default function Footer({ length }) {
   return (
     <footer className="container flex justify-between py-4 rounded-b bg-lightPrimary dark:bg-darkSecondary text-lightAccent dark:text-darkAccent">
       {/* number of items remaining in the todo list */}
-      <p>n items left</p>
+      <p>{length} items left</p>
 
       {/* sort tasks based on completion */}
       <div>

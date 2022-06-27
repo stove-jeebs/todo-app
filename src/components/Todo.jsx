@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import deleteButton from "../assets/icon-cross.svg";
 import checkIcon from "../assets/icon-check.svg";
 
@@ -29,5 +30,10 @@ export default function List({ todos, handleDelete }) {
     );
   });
 
-  return <ul className="bg-darkSecondary">{list}</ul>;
+  return (
+    <div className="shadow-lg">
+      <ul className="bg-darkSecondary">{list}</ul>
+      <Footer length={todos.length} />
+    </div>
+  );
 }

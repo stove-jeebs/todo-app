@@ -4,7 +4,6 @@ import { db, addTodo, deleteTodo } from "./firebase";
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Todo from "./components/Todo";
-import Footer from "./components/Footer";
 import darkBackground from "./assets/bg-desktop-dark.jpg";
 import lightBackground from "./assets/bg-desktop-light.jpg";
 
@@ -57,10 +56,7 @@ export default function App() {
       <div className="container absolute top-[5%]">
         <Header isDark={isDark} handleTheme={handleTheme} />
         <Form handleSubmit={handleSubmit} />
-        <div className="shadow-lg">
-          <Todo todos={todos} handleDelete={handleDelete} />
-          <Footer />
-        </div>
+        <Todo todos={todos} handleDelete={handleDelete} />
       </div>
     </div>
   );
