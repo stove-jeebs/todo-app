@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, deleteDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, collection, addDoc, deleteDoc, doc, updateDoc } from "firebase/firestore/lite";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -34,4 +34,17 @@ async function deleteTodo(id) {
   await deleteDoc(doc(db, "todos", `${id}`));
 }
 
-export { db, addTodo, deleteTodo };
+async function updateTodo(id, status) {
+  const todoRef = doc(db, "todos", `${id}`);
+  if (status === "active") {
+    await updateDoc(todoRef, {
+      status: "complete",
+    });
+  } else {
+    await updateDoc(todoRef, {
+      status: "active",
+    });
+  }
+}
+
+export { db, addTodo, deleteTodo, updateTodo };

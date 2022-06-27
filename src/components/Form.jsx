@@ -13,12 +13,12 @@ export default function Form({ handleSubmit }) {
       }}
     >
       {/* circle */}
-      <div className="px-6 mx-4 scale-50 border rounded-full aspect-square border-lightText dark:border-darkAccent" />
+      <div className="px-6 ml-8 mr-1 origin-left scale-50 border rounded-full aspect-square border-lightText dark:border-darkAccent" />
 
       {/* input field */}
       <input
         type="text"
-        className="w-full pr-8 mx-2 bg-lightPrimary dark:bg-darkSecondary focus:outline-none"
+        className="w-full pr-8 bg-lightPrimary dark:bg-darkSecondary focus:outline-none"
         value={input} // this is so you can clear the input every time the user submits input
         onChange={(e) => setInput(e.target.value)}
         placeholder="Create a new todo..."

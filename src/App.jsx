@@ -21,7 +21,7 @@ export default function App() {
           id: doc.id,
           task: doc.data().task,
           index: doc.data().index,
-          status: "active",
+          status: doc.data().status,
         }))
       )
     );
@@ -54,7 +54,6 @@ export default function App() {
     let element = todos[result.source.index];
     todos.splice(result.source.index, 1);
     todos.splice(result.destination.index, 0, element);
-
     setTodos([...todos]);
   };
 
@@ -71,12 +70,13 @@ export default function App() {
           className="w-screen h-[33%] bg-cover self-start"
           style={{ backgroundImage: `url(${isDark ? darkBackground : lightBackground})` }}
         />
+
         {/* container */}
-        <div className="container absolute top-[5%]">
+        <main className="container absolute top-[5%]">
           <Header isDark={isDark} handleTheme={handleTheme} />
           <Form handleSubmit={handleSubmit} />
           <Todo todos={todos} handleDelete={handleDelete} />
-        </div>
+        </main>
       </div>
     </DragDropContext>
   );
