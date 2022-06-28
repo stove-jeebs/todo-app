@@ -25,6 +25,7 @@ async function addTodo(task, index) {
   await addDoc(collection(db, "todos"), {
     task: `${task}`,
     index: index,
+    status: "active",
   });
 }
 

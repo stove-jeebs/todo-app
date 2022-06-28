@@ -4,7 +4,7 @@ import { db, addTodo, deleteTodo } from "./firebase";
 import { DragDropContext } from "react-beautiful-dnd";
 import Header from "./components/Header";
 import Form from "./components/Form";
-import Todo from "./components/Todo";
+import Todo from "./components/todo/Todo";
 import darkBackground from "./assets/bg-desktop-dark.jpg";
 import lightBackground from "./assets/bg-desktop-light.jpg";
 
@@ -19,8 +19,9 @@ export default function App() {
       setTodos(
         snapshot.docs.map((doc) => ({
           id: doc.id,
-          todo: doc.data().task,
+          task: doc.data().task,
           index: doc.data().index,
+          status: "active",
         }))
       )
     );
@@ -42,13 +43,19 @@ export default function App() {
   // change theme
   const handleTheme = () => setIsDark((prevState) => !prevState);
 
+  // persist list reordering onDragEnd callback
   const handleEnd = (result) => {
-    console.log(result);
     try {
-      result.source.index === result.destination.index || !result.destination === null;
+      if (result.source.index === result.destination.index) return;
     } catch (error) {
-      return;
+      return result.destination ? console.log(error) : null;
     }
+
+    let element = todos[result.source.index];
+    todos.splice(result.source.index, 1);
+    todos.splice(result.destination.index, 0, element);
+
+    setTodos([...todos]);
   };
 
   return (
