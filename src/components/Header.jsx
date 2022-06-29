@@ -11,6 +11,7 @@ export default function Header({ isDark, handleTheme }) {
           handleTheme(isDark);
         }}
         className="w-12 origin-right scale-50 cursor-pointer"
+        alt="change theme"
       />
     </header>
   );

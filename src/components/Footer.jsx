@@ -1,6 +1,6 @@
 export default function Footer({ length, handleFilter, filter, handleClear }) {
   return (
-    <footer className="container relative flex justify-between py-5 rounded-b-md bg-lightPrimary dark:bg-darkSecondary text-lightAccent dark:text-darkAccent">
+    <footer className="container relative flex justify-between px-8 py-5 rounded-b-md bg-lightPrimary dark:bg-darkSecondary text-lightAccent dark:text-darkAccent">
       {/* number of items remaining in the todo list */}
       <p>{length} items left</p>
 
@@ -30,6 +30,10 @@ export default function Footer({ length, handleFilter, filter, handleClear }) {
       <button className="hover:text-lightText dark:hover:text-darkText" onClick={() => handleClear()}>
         Clear Completed
       </button>
+
+      <div className="absolute left-0 w-full my-10 text-lg text-center top-32 sm:top-20 text-lightAccent dark:text-darkAccent">
+        Drag and drop to reorder list
+      </div>
     </footer>
   );
 }

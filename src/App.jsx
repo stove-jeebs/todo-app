@@ -58,26 +58,26 @@ export default function App() {
   };
 
   return (
-    <DragDropContext onDragEnd={handleEnd}>
+    <div
+      className={`${
+        isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"
+      } flex items-center justify-center h-screen select-none transition-all`}
+      style={{ textRendering: "optimizeSpeed" }}
+    >
+      {/* background image */}
       <div
-        className={`${
-          isDark ? "dark bg-darkPrimary" : "bg-lightPrimary"
-        } flex items-center justify-center h-screen select-none transition-all`}
-        style={{ textRendering: "optimizeSpeed" }}
-      >
-        {/* background image */}
-        <div
-          className="w-screen h-[33%] bg-cover self-start"
-          style={{ backgroundImage: `url(${isDark ? darkBackground : lightBackground})` }}
-        />
+        className="w-screen h-[33%] bg-cover self-start"
+        style={{ backgroundImage: `url(${isDark ? darkBackground : lightBackground})` }}
+      />
 
-        {/* container */}
-        <main className="container absolute top-[5%]">
-          <Header isDark={isDark} handleTheme={handleTheme} />
-          <Form handleSubmit={handleSubmit} />
+      {/* container */}
+      <main className="container absolute top-[5%]">
+        <Header isDark={isDark} handleTheme={handleTheme} />
+        <Form handleSubmit={handleSubmit} />
+        <DragDropContext onDragEnd={handleEnd}>
           <Todo todos={todos} handleDelete={handleDelete} />
-        </main>
-      </div>
-    </DragDropContext>
+        </DragDropContext>
+      </main>
+    </div>
   );
 }
