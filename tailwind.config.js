@@ -4,7 +4,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     screens: {
-      // sm: "640px",
+      sm: "599px",
       // // => @media (min-width: 640px) { ... }
 
       // md: "768px",
@@ -21,7 +21,7 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
     },
     fontFamily: {
       sans: ["Josefin Sans", "sans-serif"],
